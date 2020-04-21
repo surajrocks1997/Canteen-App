@@ -18,17 +18,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'firstName': '',
     'lastName': '',
     'age': '',
-    'address': '',
+    // 'address': '',
   };
 
   var _editedProfile = Profile(
     firstName: '',
     lastName: '',
     age: 0,
-    address: '',
+    // address: '',
   );
 
-  
   var _isLoading = false;
 
   @override
@@ -42,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'firstName': _editedProfile.firstName,
         'lastName': _editedProfile.lastName,
         'age': _editedProfile.age.toString(),
-        'address': _editedProfile.address,
+        // 'address': _editedProfile.address,
       };
     }
     super.didChangeDependencies();
@@ -81,8 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     try {
       if (_editedProfile.firstName != null ||
           _editedProfile.lastName != null ||
-          _editedProfile.age != null ||
-          _editedProfile.address != null) {
+          _editedProfile.age != null) {
         await Provider.of<ProfileDetails>(context, listen: false)
             .updateProfile(_editedProfile);
       } else {
@@ -142,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           firstName: value,
                           lastName: _editedProfile.lastName,
                           age: _editedProfile.age,
-                          address: _editedProfile.address,
+                          // address: _editedProfile.address,
                         ),
                       },
                     ),
@@ -154,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           firstName: _editedProfile.firstName,
                           lastName: value,
                           age: _editedProfile.age,
-                          address: _editedProfile.address,
+                          // address: _editedProfile.address,
                         ),
                       },
                     ),
@@ -167,26 +165,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           firstName: _editedProfile.firstName,
                           lastName: _editedProfile.lastName,
                           age: int.parse(value),
-                          address: _editedProfile.address,
+                          // address: _editedProfile.address,
                         ),
                       },
                     ),
-                    TextFormField(
-                      initialValue: _initValue['address'],
-                      decoration:
-                          InputDecoration(labelText: 'Delivery Address'),
-                      maxLines: 2,
-                      onSaved: (value) => {
-                        _editedProfile = Profile(
-                          firstName: _editedProfile.firstName,
-                          lastName: _editedProfile.lastName,
-                          age: _editedProfile.age,
-                          address: value,
-                        ),
-                      },
-                    ),
+                    // TextFormField(
+                    //   initialValue: _initValue['address'],
+                    //   decoration:
+                    //       InputDecoration(labelText: 'Delivery Address'),
+                    //   maxLines: 2,
+                    //   onSaved: (value) => {
+                    //     _editedProfile = Profile(
+                    //       firstName: _editedProfile.firstName,
+                    //       lastName: _editedProfile.lastName,
+                    //       age: _editedProfile.age,
+                    //       address: value,
+                    //     ),
+                    //   },
+                    // ),
                   ],
-                  
                 ),
               ),
             ),

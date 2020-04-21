@@ -7,8 +7,6 @@ import '../widgets/meals_grid.dart';
 import '../providers/cart.dart';
 import '../widgets/badge.dart.dart';
 import '../providers/meals.dart';
-import '../providers/profile.dart';
-import '../providers/orders.dart';
 
 enum FilterOptions {
   Favorites,
@@ -47,8 +45,8 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
         },);
       });
     }
-    Provider.of<ProfileDetails>(context).fetchAndSetProfile();
-    Provider.of<Orders>(context, listen: false).fetchAndSetOrder();
+    // Provider.of<ProfileDetails>(context).fetchAndSetProfile();
+    // Provider.of<Orders>(context, listen: false).fetchAndSetOrder();
     _isInit = false;
     super.didChangeDependencies();
   }

@@ -12,6 +12,9 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String emailId = Provider.of<Auth>(context).emailId;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -50,7 +53,7 @@ class AppDrawer extends StatelessWidget {
                     builder: (ctx, profileData, _) =>
                         profileData.details == null
                             ? Text(
-                                'Welcome, User',
+                                '$emailId',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 24.0,
@@ -94,7 +97,9 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(AnalysisScreen.routeName);
             },
           ),
+           if(emailId == "admin@thisapp.com")
           Divider(),
+           if(emailId == "admin@thisapp.com")
           ListTile(
             leading: Icon(Icons.edit),
             title: Text('Manage Meals'),

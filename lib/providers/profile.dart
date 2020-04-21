@@ -8,9 +8,9 @@ class Profile with ChangeNotifier {
   final String firstName;
   final String lastName;
   final int age;
-  final String address;
+  // final String address;
 
-  Profile({this.firstName, this.lastName, this.age, this.address});
+  Profile({this.firstName, this.lastName, this.age});
 }
 
 class ProfileDetails with ChangeNotifier {
@@ -18,7 +18,7 @@ class ProfileDetails with ChangeNotifier {
     firstName: '',
     lastName: '',
     age: null,
-    address: '',
+    // address: '',
   );
   final String authToken;
   final String userId;
@@ -46,7 +46,7 @@ class ProfileDetails with ChangeNotifier {
         firstName: extractedData['firstName'],
         lastName: extractedData['lastName'],
         age: extractedData['age'],
-        address: extractedData['address'],
+        // address: extractedData['address'],
       );
 
       _profile = loadedData;
@@ -69,7 +69,7 @@ class ProfileDetails with ChangeNotifier {
             'firstName': profile.firstName,
             'lastName': profile.lastName,
             'age': profile.age,
-            'address': profile.address
+            // 'address': profile.address
           },
         ),
       );
@@ -91,7 +91,7 @@ class ProfileDetails with ChangeNotifier {
             'firstName': profile.firstName,
             'lastName': profile.lastName,
             'age': profile.age,
-            'address': profile.address
+            // 'address': profile.address
           },
         ),
       );

@@ -12,6 +12,7 @@ class Auth with ChangeNotifier {
   DateTime _expiryDate;
   String _userId;
   Timer _authTimer;
+  String _emailId;
 
   bool get isAuth {
     return token != null;
@@ -28,6 +29,11 @@ class Auth with ChangeNotifier {
 
   String get userId {
     return _userId;
+  }
+
+  String get emailId {
+    // print(_emailId);
+    return _emailId;
   }
 
   Future<void> _authenticate(
@@ -51,8 +57,11 @@ class Auth with ChangeNotifier {
         throw HttpException(responseData['error']['message']);
       }
 
+      // print(responseData);
+
       _token = responseData['idToken'];
       _userId = responseData['localId'];
+      _emailId = responseData['email'];
       _expiryDate = DateTime.now().add(
         Duration(
           seconds: int.parse(
@@ -69,6 +78,7 @@ class Auth with ChangeNotifier {
       final userData = json.encode({
         'token': _token,
         'userId': _userId,
+        'emailId': _emailId,
         'expiryDate': _expiryDate.toIso8601String(),
       });
 

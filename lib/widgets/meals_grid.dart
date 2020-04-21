@@ -14,7 +14,7 @@ class MealsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Meal> categoryMeals = [];
-    final mealsData = Provider.of<Meals>(context, listen: false).items;
+    Provider.of<Meals>(context, listen: false).items;
 
     if (category == "Starters") {
       categoryMeals = showFavorites
