@@ -8,6 +8,9 @@ import './meal.dart';
 
 class Meals with ChangeNotifier {
   List<Meal> _items = [];
+  List<Meal> _starter = [];
+  List<Meal> _mainCourse = [];
+  List<Meal> _dessert = [];
 
   // var _showFavoritesOnly = false;
   final String authToken;
@@ -19,13 +22,51 @@ class Meals with ChangeNotifier {
     return [..._items];
   }
 
+  //get starters
+  List<Meal> get starters {
+    _items.forEach((item) {
+      if(item.category == 'Starters'){
+        _starter.add(item);
+      }
+    });
+    return [..._starter];
+  }
+
+  //get main course
+  List<Meal> get mainCourse {
+    _items.forEach((item) {
+      if(item.category == 'Main Course'){
+        _mainCourse.add(item);
+      }
+    });
+    return [..._mainCourse];
+  }
+
+  //get dessert
+  List<Meal> get dessert {
+    _items.forEach((item) {
+      if(item.category == 'Dessert'){
+        _dessert.add(item);
+      }
+    });
+    return [..._dessert];
+  }
+
   List<Meal> get favoriteItems {
     return _items.where((mealItem) => mealItem.isFavorite).toList();
   }
 
+  //get favoriteStarter
+
+  //get favoriteMainCourse
+
+  //get favoriteDessert
+
   Meal findById(String mealId) {
     return _items.firstWhere((meal) => meal.id == mealId);
   }
+
+  
 
   // void showFavoritesOnly() {
   //   _showFavoritesOnly = true;
@@ -69,12 +110,6 @@ class Meals with ChangeNotifier {
           isFavorite:
               favoriteData == null ? false : favoriteData[mealId] ?? false,
         ));
-      });
-      
-      loadedMeals.forEach((meal) {
-        if(meal.category == 'Main Course'){
-          print(meal.title);
-        }
       });
 
       _items = loadedMeals;

@@ -25,15 +25,19 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
+  String category;
 
   @override
   void initState() {
     super.initState();
+
   }
 
   @override
   void didChangeDependencies() {
     if (_isInit) {
+      category = ModalRoute.of(context).settings.arguments as String;
+      // print(category);
       setState(() {
         _isLoading = true;
       });
@@ -96,7 +100,7 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : MealsGrid(_showOnlyFavorites),
+          : MealsGrid(_showOnlyFavorites, category),
     );
   }
 }

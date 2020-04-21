@@ -24,13 +24,10 @@ class MealItem extends StatelessWidget {
               arguments: meal.id,
             );
           },
-          child: Hero(
-            tag: meal.id,
-            child: FadeInImage(
-              placeholder: AssetImage('assets/images/product-placeholder.png'),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-            ),
+          child: FadeInImage(
+            placeholder: AssetImage('assets/images/placeholder.jpg'),
+            image: NetworkImage(meal.imageUrl),
+            fit: BoxFit.cover,
           ),
         ),
         footer: GridTileBar(

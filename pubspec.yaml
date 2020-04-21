@@ -51,6 +51,7 @@ flutter:
    - assets/images/dessert.jpg
    - assets/images/mainCourse.jpg
    - assets/images/starters.jpg
+   - assets/images/placeholder.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
