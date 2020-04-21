@@ -18,37 +18,37 @@ class Meals with ChangeNotifier {
 
   Meals(this.authToken, this._items, this.userId);
 
+
   List<Meal> get items {
+    _starter = [];
+    _mainCourse = [];
+    _dessert = [];
+    _items.forEach((item) {
+      if(item.category == 'Starters'){
+        _starter.add(item);
+      }
+      else if(item.category == 'Main Course'){
+        _mainCourse.add(item);
+      }
+      else if(item.category == 'Dessert'){
+        _dessert.add(item);
+      }
+    });
     return [..._items];
   }
 
   //get starters
   List<Meal> get starters {
-    _items.forEach((item) {
-      if(item.category == 'Starters'){
-        _starter.add(item);
-      }
-    });
-    return [..._starter];
+    return [..._starter]; 
   }
 
   //get main course
   List<Meal> get mainCourse {
-    _items.forEach((item) {
-      if(item.category == 'Main Course'){
-        _mainCourse.add(item);
-      }
-    });
     return [..._mainCourse];
   }
 
   //get dessert
   List<Meal> get dessert {
-    _items.forEach((item) {
-      if(item.category == 'Dessert'){
-        _dessert.add(item);
-      }
-    });
     return [..._dessert];
   }
 
@@ -66,8 +66,6 @@ class Meals with ChangeNotifier {
     return _items.firstWhere((meal) => meal.id == mealId);
   }
 
-  
-
   // void showFavoritesOnly() {
   //   _showFavoritesOnly = true;
   //   notifyListeners();
@@ -79,7 +77,6 @@ class Meals with ChangeNotifier {
   // }
 
   Future<void> fetchAndSetMeal([bool filterByUser = false]) async {
-
     // final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
         'https://canteen-app-9667c.firebaseio.com/meals.json?auth=$authToken';
@@ -91,7 +88,6 @@ class Meals with ChangeNotifier {
       if (extractedData == null) {
         return;
       }
-
 
       url =
           'https://canteen-app-9667c.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
@@ -120,7 +116,8 @@ class Meals with ChangeNotifier {
   }
 
   Future<void> addMeals(Meal meal) async {
-    final url = 'https://canteen-app-9667c.firebaseio.com/meals.json?auth=$authToken';
+    final url =
+        'https://canteen-app-9667c.firebaseio.com/meals.json?auth=$authToken';
 
     try {
       final response = await http.post(

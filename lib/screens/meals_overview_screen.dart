@@ -57,7 +57,7 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Canteen4U'),
+        title: Text(category),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {

@@ -5,39 +5,32 @@ import '../widgets/meal_item.dart';
 import '../providers/meals.dart';
 import '../providers/meal.dart';
 
-class MealsGrid extends StatefulWidget {
+class MealsGrid extends StatelessWidget {
   final bool showFavorites;
   final String category;
 
   MealsGrid(this.showFavorites, this.category);
 
   @override
-  _MealsGridState createState() => _MealsGridState();
-}
-
-class _MealsGridState extends State<MealsGrid> {
-  List<Meal> categoryMeals;
-
-  @override
-  void initState() {
-    final mealsData = Provider.of<Meals>(context, listen: false);
-
-    if (widget.category == "Starters") {
-      categoryMeals =
-          widget.showFavorites ? mealsData.favoriteItems : mealsData.starters;
-    } else if (widget.category == "Main Course") {
-      categoryMeals =
-          widget.showFavorites ? mealsData.favoriteItems : mealsData.mainCourse;
-    } else if (widget.category == "Dessert") {
-      categoryMeals =
-          widget.showFavorites ? mealsData.favoriteItems : mealsData.dessert;
-    }
-    // print(widget.category);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    List<Meal> categoryMeals = [];
+    final mealsData = Provider.of<Meals>(context, listen: false).items;
+
+    if (category == "Starters") {
+      categoryMeals = showFavorites
+          ? Provider.of<Meals>(context, listen: false).favoriteItems
+          : Provider.of<Meals>(context, listen: false).starters;
+    } else if (category == "Main Course") {
+      categoryMeals = showFavorites
+          ? Provider.of<Meals>(context, listen: false).favoriteItems
+          : Provider.of<Meals>(context, listen: false).mainCourse;
+    } else if (category == "Dessert") {
+      categoryMeals = showFavorites
+          ? Provider.of<Meals>(context, listen: false).favoriteItems
+          : Provider.of<Meals>(context, listen: false).dessert;
+    }
+    print(category);
+
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: categoryMeals.length,
