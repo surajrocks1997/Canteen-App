@@ -3,7 +3,6 @@ import './meals_overview_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/app_drawer.dart';
-import '../providers/profile.dart';
 import '../providers/orders.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -21,12 +20,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<ProfileDetails>(context).fetchAndSetProfile().then((_) {
+      Provider.of<Orders>(context, listen: false).fetchAndSetOrder().then((_) {
         setState(() {
           _isLoading = false;
         });
       });
-      Provider.of<Orders>(context, listen: false).fetchAndSetOrder();
     }
     _isInit = false;
 

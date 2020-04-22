@@ -40,8 +40,6 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
     final List<OrderItem> graphData =
         Provider.of<Orders>(context, listen: false).orders;
-    // graphData
-    //     .forEach((order) => print('${order.amount} and ${order.dateTime}'));
     graphData.forEach(
       (data) => {
         graphValue.add(
@@ -81,17 +79,11 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
         ((_currentMonthOrderAmount - _prevMonthOrderAmount) * 100) /
             (_prevMonthOrderAmount);
 
-    // print('Percentage Change: ${_percentageChange.toStringAsFixed(2)}');
-    // print('Total Order Amount: $_totalOrderAmount');
-    // print('Prev Month Order Total: $_prevMonthOrderAmount');
-    // print('Current Month Order Total: $_currentMonthOrderAmount');
-
     seriesList = _createRandomData();
   }
 
   List<charts.Series<GraphValue, DateTime>> _createRandomData() {
     final orderData = graphValue;
-    // print(orderData.toString());
 
     return [
       charts.Series<GraphValue, DateTime>(
@@ -185,25 +177,27 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                               fontSize: 14,
                             ),
                           ),
-                          _percentageChange.toStringAsFixed(2) == 'Infinity' ? Text(
-                            'NO ORDERS',
-                            style: TextStyle(
-                              color: (_percentageChange < 0)
-                                  ? Colors.green
-                                  : Colors.red,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ) : Text(
-                            '${_percentageChange.toStringAsFixed(2)}%',
-                            style: TextStyle(
-                              color: (_percentageChange < 0)
-                                  ? Colors.green
-                                  : Colors.red,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          _percentageChange.toStringAsFixed(2) == 'Infinity'
+                              ? Text(
+                                  'NO ORDERS',
+                                  style: TextStyle(
+                                    color: (_percentageChange < 0)
+                                        ? Colors.green
+                                        : Colors.red,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              : Text(
+                                  '${_percentageChange.toStringAsFixed(2)}%',
+                                  style: TextStyle(
+                                    color: (_percentageChange < 0)
+                                        ? Colors.green
+                                        : Colors.red,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                         ],
                       ),
                     ],
@@ -293,41 +287,6 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 25),
-              //   child: Text(
-              //     'Highest you have spent on single order is',
-              //     style: TextStyle(fontSize: 18),
-              //   ),
-              // ),
-              // Column(
-              //   children: <Widget>[
-              //     Padding(
-              //       padding: EdgeInsets.only(top: 8),
-              //       child: Text(
-              //         'INR $highestOrderAmount',
-              //         style: TextStyle(
-              //           fontSize: 24,
-              //           fontWeight: FontWeight.bold,
-              //         ),
-              //         textAlign: TextAlign.center,
-              //       ),
-              //     ),
-              //     Padding(padding: EdgeInsets.only(top: 8), child: Text('on')),
-              //     Padding(
-              //       padding: EdgeInsets.only(top: 8),
-              //       child: Text(
-              //         '${DateFormat('dd/MM/yyyy hh:mm').format(highestOrderDate)}',
-              //         style: TextStyle(
-              //           fontSize: 20,
-              //           fontWeight: FontWeight.bold,
-              //         ),
-              //         textAlign: TextAlign.center,
-              //       ),
-              //     ),
-              //     Divider(),
-              //   ],
-              // ),
             ],
           ),
         ),

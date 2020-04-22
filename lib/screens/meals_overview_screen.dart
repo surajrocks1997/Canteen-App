@@ -5,7 +5,7 @@ import '../widgets/app_drawer.dart';
 import './cart_screen.dart';
 import '../widgets/meals_grid.dart';
 import '../providers/cart.dart';
-import '../widgets/badge.dart.dart';
+import '../widgets/badge.dart';
 import '../providers/meals.dart';
 
 enum FilterOptions {
@@ -35,7 +35,6 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
   void didChangeDependencies() {
     if (_isInit) {
       category = ModalRoute.of(context).settings.arguments as String;
-      // print(category);
       setState(() {
         _isLoading = true;
       });
@@ -45,8 +44,6 @@ class _MealsOverviewScreenState extends State<MealsOverviewScreen> {
         },);
       });
     }
-    // Provider.of<ProfileDetails>(context).fetchAndSetProfile();
-    // Provider.of<Orders>(context, listen: false).fetchAndSetOrder();
     _isInit = false;
     super.didChangeDependencies();
   }

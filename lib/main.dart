@@ -5,7 +5,6 @@ import './providers/auth.dart';
 import './providers/cart.dart';
 import './providers/meals.dart';
 import './providers/orders.dart';
-import './providers/profile.dart';
 
 import './screens/meals_overview_screen.dart';
 import './screens/cart_screen.dart';
@@ -15,7 +14,6 @@ import './screens/user_meals_screen.dart';
 import './screens/edit_meals_screen.dart';
 import './screens/auth_screen.dart';
 import './screens/splash_screen.dart.dart';
-import './screens/profile_screen.dart';
 import './screens/analysis_screen.dart';
 import './screens/category_screen.dart';
 
@@ -37,13 +35,6 @@ class MyApp extends StatelessWidget {
                 )),
         ChangeNotifierProvider.value(
           value: Cart(),
-        ),
-        ChangeNotifierProxyProvider<Auth, ProfileDetails>(
-          builder: (ctx, auth, profileDetail) => ProfileDetails(
-            profileDetail == null ? null : profileDetail.details,
-            auth.token,
-            auth.userId,
-          ),
         ),
         ChangeNotifierProxyProvider<Auth, Orders>(
           builder: (ctx, auth, previousOrders) => Orders(
@@ -79,7 +70,6 @@ class MyApp extends StatelessWidget {
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
             UserMealsScreen.routeName: (ctx) => UserMealsScreen(),
             EditMealScreen.routeName: (ctx) => EditMealScreen(),
-            ProfileScreen.routeName: (ctx) => ProfileScreen(),
             AnalysisScreen.routeName: (ctx) => AnalysisScreen(),
           },
         ),

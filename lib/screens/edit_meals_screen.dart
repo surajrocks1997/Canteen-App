@@ -105,10 +105,6 @@ class _EditMealScreenState extends State<EditMealScreen> {
       _isLoading = true;
     });
 
-    // print(_editedMeal.category);
-    // print(_editedMeal.vegNonVeg);
-
-
     if (_editedMeal.id != null) {
       await Provider.of<Meals>(context, listen: false)
           .updateMeal(_editedMeal.id, _editedMeal);

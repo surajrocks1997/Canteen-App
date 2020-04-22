@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/profile.dart';
 import '../screens/orders_screen.dart';
 import '../screens/user_meals_screen.dart';
 import '../providers/auth.dart';
-import '../screens/profile_screen.dart';
 import '../screens/analysis_screen.dart';
 
 class AppDrawer extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     String emailId = Provider.of<Auth>(context).emailId;
 
     return Drawer(
@@ -37,10 +33,10 @@ class AppDrawer extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(8),
                     child: Material(
-                      child: 
-                      CircleAvatar(
+                      child: CircleAvatar(
                         // backgroundColor: Theme.of(context).primaryColor,
-                        backgroundImage: NetworkImage('https://previews.123rf.com/images/jemastock/jemastock1904/jemastock190431374/123116164-man-portrait-faceless-avatar-cartoon-character-vector-illustration-graphic-design.jpg'),
+                        backgroundImage:
+                            AssetImage('assets/images/profile.jpg'),
                         radius: 40,
                       ),
                       borderRadius: BorderRadius.all(
@@ -49,23 +45,12 @@ class AppDrawer extends StatelessWidget {
                       elevation: 15,
                     ),
                   ),
-                  Consumer<ProfileDetails>(
-                    builder: (ctx, profileData, _) =>
-                        profileData.details == null
-                            ? Text(
-                                '$emailId',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                ),
-                              )
-                            : Text(
-                                'Welcome, ${profileData.details.firstName}',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                ),
-                              ),
+                  Text(
+                    '$emailId',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.0,
+                    ),
                   ),
                 ],
               ),
@@ -97,33 +82,16 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(AnalysisScreen.routeName);
             },
           ),
-           if(emailId == "admin@thisapp.com")
-          Divider(),
-           if(emailId == "admin@thisapp.com")
-          ListTile(
-            leading: Icon(Icons.edit),
-            title: Text('Manage Meals'),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(UserMealsScreen.routeName);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(ProfileScreen.routeName);
-            },
-            // onTap: () async {
-            //   Profile profileData = await Provider.of<ProfileDetails>(context)
-            //       .fetchAndSetProfile();
-            //   Navigator.of(context).pushReplacementNamed(
-            //       ProfileScreen.routeName,
-            //       arguments: profileData);
-            // },
-          ),
+          if (emailId == "admin@thisapp.com") Divider(),
+          if (emailId == "admin@thisapp.com")
+            ListTile(
+              leading: Icon(Icons.edit),
+              title: Text('Manage Meals'),
+              onTap: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(UserMealsScreen.routeName);
+              },
+            ),
           Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),

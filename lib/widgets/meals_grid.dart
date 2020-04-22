@@ -29,7 +29,6 @@ class MealsGrid extends StatelessWidget {
           ? Provider.of<Meals>(context, listen: false).favoriteItems
           : Provider.of<Meals>(context, listen: false).dessert;
     }
-    print(category);
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),
