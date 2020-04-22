@@ -53,6 +53,8 @@ flutter:
    - assets/images/starters.jpg
    - assets/images/placeholder.jpg
    - assets/images/profile.jpg
+   - assets/images/Veg.jpg
+   - assets/images/NonVeg.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

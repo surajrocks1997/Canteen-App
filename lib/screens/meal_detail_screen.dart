@@ -36,7 +36,7 @@ class MealDetailScreen extends StatelessWidget {
             Text(
               'INR ${loadedMeal.price}',
               style: TextStyle(
-                color: Colors.grey,
+                color: Colors.black45,
                 fontSize: 20,
               ),
             ),
@@ -49,11 +49,26 @@ class MealDetailScreen extends StatelessWidget {
                 horizontal: 10,
               ),
               child: Text(
-                loadedMeal.description,
+                '${loadedMeal.description}',
+                style: TextStyle(fontSize: 22),
                 textAlign: TextAlign.center,
                 softWrap: true,
               ),
-            )
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            (loadedMeal.vegNonVeg == "Veg")
+                ? Container(
+                    height: 75,
+                    width: 75,
+                    child: Image.asset('assets/images/Veg.jpg'),
+                  )
+                : Container(
+                    height: 75,
+                    width: 75,
+                    child: Image.asset('assets/images/NonVeg.jpg'),
+                  )
           ],
         ),
       ),
